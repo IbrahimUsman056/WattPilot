@@ -312,6 +312,7 @@ st.markdown("""
   --ink:#111827; --muted:#6b7280; --line:#e5e7eb; --card:#ffffff;
   --r1:#ef4444; --r2:#f97316; --r3:#eab308; --r4:#22c55e; --r5:#06b6d4; --r6:#3b82f6; --r7:#8b5cf6; --r8:#ec4899;
   --rainbow:linear-gradient(90deg,#ef4444,#f97316,#eab308,#22c55e,#06b6d4,#3b82f6,#8b5cf6,#ec4899);
+  --rainbow-deep:linear-gradient(90deg,#dc2626,#ea580c,#ca8a04,#16a34a,#0891b2,#2563eb,#7c3aed,#db2777);
   --radius:18px;
   --shadow-sm:0 1px 2px rgba(17,24,39,.05),0 2px 6px rgba(17,24,39,.06);
   --shadow-md:0 12px 28px -10px rgba(99,102,241,.35);
@@ -360,8 +361,8 @@ h2{font-size:1.4rem!important;} h3{font-size:1.1rem!important;}
 /* Section headers */
 .sec{display:flex;align-items:center;gap:.65rem;margin:1.5rem 0 .6rem 0;}
 .sec .num{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:.85rem;
-  font-weight:800;color:#fff;background:var(--rainbow);background-size:200% 100%;
-  animation:flow 7s linear infinite;box-shadow:var(--shadow-sm);}
+  font-weight:800;color:#fff!important;background:var(--rainbow-deep);background-size:200% 100%;
+  animation:flow 7s linear infinite;box-shadow:var(--shadow-sm);text-shadow:0 1px 2px rgba(0,0,0,.35);}
 .sec .title{font-size:1.1rem;font-weight:800;color:var(--ink);}
 
 /* Metric cards */
@@ -385,10 +386,11 @@ h2{font-size:1.4rem!important;} h3{font-size:1.1rem!important;}
 .stButton>button,.stDownloadButton>button{border-radius:12px!important;font-weight:700!important;
   padding:.62rem 1.15rem!important;border:1px solid var(--line)!important;transition:all .2s!important;}
 .stButton>button[kind="primary"],.stDownloadButton>button{
-  background:linear-gradient(90deg,#ef4444,#f97316,#eab308,#22c55e,#06b6d4,#3b82f6,#8b5cf6,#ec4899,#ef4444)!important;
+  background:linear-gradient(90deg,#dc2626,#ea580c,#ca8a04,#16a34a,#0891b2,#2563eb,#7c3aed,#db2777,#dc2626)!important;
   background-size:300% 100%!important;animation:flow 10s linear infinite!important;
-  border:none!important;color:#fff!important;text-shadow:0 1px 2px rgba(0,0,0,.25);
+  border:none!important;color:#fff!important;text-shadow:0 1px 3px rgba(0,0,0,.45);
   box-shadow:0 12px 24px -12px rgba(139,92,246,.8)!important;}
+.stButton>button[kind="primary"] *,.stDownloadButton>button *{color:#fff!important;}
 .stButton>button[kind="primary"]:hover,.stDownloadButton>button:hover{
   transform:translateY(-2px)!important;box-shadow:0 16px 28px -12px rgba(236,72,153,.8)!important;}
 .stButton>button[kind="secondary"]:hover{border-color:var(--r7)!important;color:var(--r7)!important;}
@@ -413,6 +415,18 @@ div[data-testid="stVerticalBlockBorderWrapper"]{border-radius:16px!important;bac
 div[data-baseweb="select"]>div,div[data-baseweb="input"]>div,textarea{border-radius:10px!important;}
 div[data-testid="stSlider"] [role="slider"]{background:var(--r7)!important;}
 hr{border:none;height:3px;border-radius:3px;background:var(--rainbow);opacity:.5;margin:1.2rem 0;}
+
+/* Force readable text on light backgrounds */
+:root{color-scheme:light;}
+[data-testid="stWidgetLabel"] p,[data-testid="stWidgetLabel"] label,
+section[data-testid="stSidebar"] h3,section[data-testid="stSidebar"] label p,
+.stRadio label p,.stCheckbox label p,[data-testid="stCaptionContainer"],
+[data-testid="stMarkdownContainer"] h2,[data-testid="stMarkdownContainer"] h3,
+[data-testid="stMarkdownContainer"] h4{color:var(--ink)!important;}
+div[data-baseweb="select"]>div,div[data-baseweb="input"]>div,textarea{
+  background:#fff!important;color:var(--ink)!important;border:1px solid var(--line)!important;}
+div[data-baseweb="select"] *,div[data-baseweb="input"] input,textarea{color:var(--ink)!important;}
+.hero p{color:#c7d2fe!important;}
 
 /* Footer */
 .footnote{color:var(--muted);font-size:.82rem;text-align:center;margin-top:2rem;padding-top:1rem;
